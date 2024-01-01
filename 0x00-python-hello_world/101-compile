@@ -1,2 +1,3 @@
 #!/bin/bash
+PYC_FILE="${PYFILE}c"
 python3 -m py_compile "$PYFILE" 2> /dev/null
