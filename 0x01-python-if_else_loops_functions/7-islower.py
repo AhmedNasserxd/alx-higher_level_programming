@@ -3,7 +3,6 @@
 
 def islower(c):
     """Check if the given character is lowercase."""
-    """NEW BLANK"""
 
 
     return ord('a') <= ord(c) <= ord('z')
