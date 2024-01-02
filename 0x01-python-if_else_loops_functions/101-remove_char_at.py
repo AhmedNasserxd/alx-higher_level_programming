@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 
 def remove_char_at(str, n):
-    """Creates a copy of the string with the character at position n removed."""
+    """Creates a copy of the string with the character at position n removed"""
     if n < 0 or n >= len(str):
         return str
 
     return str[:n] + str[n + 1:]
+
 
 if __name__ == "__main__":
     remove_char_at = __import__('101-remove_char_at').remove_char_at
