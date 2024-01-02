@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def uppercase(s):
 """Prints a string in uppercase followed by a new line."""
 for char in s:

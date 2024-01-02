@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def fizzbuzz():
 """Prints numbers from 1 to 100 with Fizz, Buzz, or FizzBuzz."""
 for num in range(1, 101):
