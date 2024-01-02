@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 def islower(c):
     """Check if the given character is lowercase."""
     """NEW BLANK"""
