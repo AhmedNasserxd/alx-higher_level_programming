@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 
-
-"""funcdef"""
 def islower(c):
     """Check if the given character is lowercase."""
 
