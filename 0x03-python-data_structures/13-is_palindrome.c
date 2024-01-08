@@ -1,59 +1,30 @@
-#include <stdlib.h>
 #include "lists.h"
 
 /**
-*is_palindrome - checks if a singly linked list is a palindrome
-*@head: double pointer to the head of the linked list
-*Return: 1 if palindrome, 0 otherwise
+*is_palindrome - to see if singly linked list is palindrome
+*@head: pointer
+*Return: 0 if not, 1 if palindrome
 */
 int is_palindrome(listint_t **head)
 {
-listint_t *slow = *head, *fast = *head;
-listint_t *prev_slow = NULL;
-listint_t *second_half, *mid_node;
-int is_palindrome = 1;
+listint_t *tmp = *head;
+unsigned int size = 0, i = 0;
+int data[10240];
 
-if (*head == NULL || (*head)->next == NULL)
+if (head == NULL || *head == NULL) /* Non-existing or empty list is palindrome */
 return (1);
 
-while (fast != NULL && fast->next != NULL)
+while (tmp) /* Find size of linked list and pull node data into array */
 {
-fast = fast->next->next;
-
-// Reverse the first half of the list
-listint_t *temp = slow;
-slow = slow->next;
-temp->next = prev_slow;
-prev_slow = temp;
+data[i++] = tmp->n;
+tmp = tmp->next;
+size += 1;
 }
 
-// If the number of elements is odd, move to the next node
-if (fast != NULL)
-slow = slow->next;
-
-second_half = slow;
-mid_node = prev_slow;
-
-// Compare the first and second halves
-while (second_half != NULL)
+for (i = 0; i <= (size / 2); i++)
 {
-if (mid_node->n != second_half->n)
-{
-is_palindrome = 0;
-break;
+if (data[i] != data[size - i - 1])
+return (0);
 }
-mid_node = mid_node->next;
-second_half = second_half->next;
-}
-
-// Restore the original list
-while (prev_slow != NULL)
-{
-listint_t *temp = prev_slow->next;
-prev_slow->next = *head;
-*head = prev_slow;
-prev_slow = temp;
-}
-
-return (is_palindrome);
+return (1);
 }
