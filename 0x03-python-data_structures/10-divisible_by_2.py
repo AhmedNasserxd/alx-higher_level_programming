@@ -4,6 +4,7 @@ def divisible_by_2(my_list=[]):
     """Finds all multiples of 2 in a list."""
     return [num % 2 == 0 for num in my_list]
 
+
 if __name__ == "__main__":
     my_list = [0, 1, 2, 3, 4, 5, 6]
     list_result = divisible_by_2(my_list)

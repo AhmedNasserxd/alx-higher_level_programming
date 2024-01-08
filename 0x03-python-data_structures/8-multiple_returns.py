@@ -7,6 +7,7 @@ def multiple_returns(sentence):
 
     return length, first
 
+
 if __name__ == "__main__":
     sentence = "At school, I learnt C!"
     length, first = multiple_returns(sentence)
