@@ -1,55 +1,60 @@
+#include <stdio.h>
 #include <Python.h>
 
 /**
-*print_python_bytes - prints info about a Python bytes object
-*@p: pointer to Python object
+*print_python_bytes - print basic info about Python bytes objects
+*@p: Python object
 */
 void print_python_bytes(PyObject *p)
 {
-Py_ssize_t i, size;
-char *string;
+char *s;
+Py_ssize_t len, i;
 
 printf("[.] bytes object info\n");
-
 if (!PyBytes_Check(p))
 {
 printf("  [ERROR] Invalid Bytes Object\n");
 return;
 }
 
-size = PyBytes_Size(p);
-string = PyBytes_AsString(p);
+PyBytes_AsStringAndSize(p, &s, &len);
+printf("  size: %ld\n", len);
+printf("  trying string: %s\n", s);
 
-printf("  size: %ld\n", size);
-printf("  trying string: %s\n", string);
-
-printf("  first %ld bytes: ", size + 1 > 10 ? 10 : size + 1);
-for (i = 0; i < size + 1 && i < 10; i++)
-printf("%02x ", (unsigned char)string[i]);
+Py_ssize_t limit = len > 10 ? 10 : len;
+printf("  first %ld bytes: ", limit);
+for (i = 0; i < limit; i++)
+printf("%02x ", s[i] & 0xff);
 printf("\n");
 }
 
 /**
-*print_python_list - prints info about a Python list object
-*@p: pointer to Python object
+*print_python_list - print basic info about Python lists
+*@p: Python object
 */
 void print_python_list(PyObject *p)
 {
-Py_ssize_t i, size;
-PyObject *item;
+Py_ssize_t i;
+PyObject *in_list;
 
-size = PyList_Size(p);
+if (!PyList_Check(p))
+return;
 
 printf("[*] Python list info\n");
-printf("[*] Size of the Python List = %ld\n", size);
+printf("[*] Size of the Python List = %ld\n", PyList_Size(p));
 printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
 
-for (i = 0; i < size; i++)
+for (i = 0; i < PyList_Size(p); i++)
 {
-item = PyList_GetItem(p, i);
-printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
+in_list = PySequence_GetItem(p, i);
+if (!in_list)
+continue;
 
-if (PyBytes_Check(item))
-print_python_bytes(item);
+printf("Element %ld: %s\n", i, in_list->ob_type->tp_name);
+        
+if (strcmp(in_list->ob_type->tp_name, "bytes") == 0)
+print_python_bytes(in_list);
+
+Py_XDECREF(in_list);
 }
 }
