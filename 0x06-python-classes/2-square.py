@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Square class definition based on 1"""
+
 
 class Square:
     """Class that defines a square."""
