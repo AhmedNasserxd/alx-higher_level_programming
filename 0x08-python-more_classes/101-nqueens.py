@@ -5,8 +5,7 @@ N-Queens backtracking program
 
 from sys import argv
 
-
-def main():
+if __name__ == "__main__":
     if len(argv) != 2:
         print("Usage: nqueens N")
         exit(1)
@@ -61,7 +60,3 @@ def main():
 
     # Start the recursive process at x = 0
     nqueens(0)
-
-
-if __name__ == "__main__":
-    main()
