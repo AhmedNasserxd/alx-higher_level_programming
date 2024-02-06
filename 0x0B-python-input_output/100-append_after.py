@@ -14,15 +14,11 @@ def append_after(filename="", search_string="", new_string=""):
     Returns:
         None
     """
-    with open(filename, 'r+') as f:
-        lines = f.readlines()
-        f.seek(0)
-        for line in lines:
-            f.write(line)
+    with open(filename, mode="r+", encoding="utf-8") as f:
+        new_text = ""
+        for line in f:
+            new_text += line
             if search_string in line:
-                f.write(new_string)
-        f.truncate()
-
-
-# Example usage:
-append_after("append_after_100.txt", "Python", "\"C is fun!\"\n")
+                new_text += new_string
+        f.seek(0)
+        f.write(new_text)
