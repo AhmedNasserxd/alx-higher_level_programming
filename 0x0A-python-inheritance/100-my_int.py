@@ -2,6 +2,7 @@
 
 """Module 100-my_int"""
 
+
 class MyInt(int):
     """Subclass of int with inverted == and != operators"""
 
