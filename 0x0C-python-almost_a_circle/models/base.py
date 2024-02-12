@@ -81,15 +81,15 @@ class Base():
     def load_from_file(cls):
         """Returns a list of instances"""
         filename = cls.__name__ + ".json"
-        instances = []
+        ins = []
         try:
             with open(filename, "r") as f:
                 instances = cls.from_json_string(f.read())
             for i, dic in enumerate(instances):
-                instances.append(cls.create(**instances[i]))
+                ins.append(cls.create(**instances[i]))
         except FileNotFoundError:
             pass
-        return instances
+        return ins
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
