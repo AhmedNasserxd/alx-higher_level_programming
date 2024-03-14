@@ -1,6 +1,5 @@
 -- https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql
--- run this to import a SQL dump:
---      echo "CREATE DATABASE hbtn_0d_tvshows;"
+-- run this to import a SQL dump
 -- each record should display: tv_shows.title - tv_show_genres.genre_id
 -- results must be sorted in ascending order by tv_shows.title and tv_show_genres.genre_id
 -- can use only one SELECT statement
