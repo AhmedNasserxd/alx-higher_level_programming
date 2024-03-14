@@ -1,6 +1,5 @@
 -- https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/274/hbtn_0d_tvshows.sql
--- run this to import a SQL dump:
---      echo "CREATE DATABASE hbtn_0d_tvshows;"
+-- run this to import a SQL dump
 -- script that lists all Comedy shows in the database hbtn_0d_tvshows
 -- tv_genres table contains only one record where name = Comedy (but the id can be different)
 -- each record should display: tv_shows.title
